@@ -1,1 +1,59 @@
 <h1>Homepage</h1>
+<div>
+    <a href='signup/'>Add A New User</a>
+    <a href='logout/'>Logout</a>
+</div>
+<p>
+    <a href='user/{{request.user.username}}'>My Page</a>
+    <a href='add_ticket/'>Submit a New Ticket</a>
+</p>
+
+
+New:
+<p>
+    <div>
+        {% for x in new %}
+        <li>
+            <a href='ticket/{{x.id}}'>{{ x }}</a> |
+            <a href='claim_ticket/{{x.id}}'>Claim Ticket</a>
+            {% if x.filed_by == request.user %}
+                | <a href='ticket_edit/{{x.id}}'>Edit</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </div>
+</p>
+
+In Progress:
+<p>
+    <div>
+        {% for x in in_progress %}
+        <li>
+            <a href='ticket/{{x.id}}'>{{ x }}</a>
+            {% if x.assigned_to == request.user %}
+                | <a href='ticket_edit/{{x.id}}'>Edit</a>
+                | <a href='ticket_done/{{x.id}}'>Done</a>
+                | <a href='ticket_invalid/{{x.id}}'>Invalid</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </div>
+</p>
+
+Done:
+<p>
+    <div>
+        {% for x in done %}
+        <li><a href='ticket/{{x.id}}'>{{ x }}</a> | by: {{ x.completed_by }}</li>
+        {% endfor %}
+    </div>
+</p>
+
+Invalid:
+<p>
+    <div>
+        {% for x in invalid %}
+        <li><a href='ticket/{{x.id}}'>{{ x }}</a></li>
+        {% endfor %}
+    </div>
+</p>

@@ -1,0 +1,33 @@
+<h1>Ticket Detail</h1>
+
+<div>
+    <a href="/">Home</a>
+</div>
+
+<h2> {{data}} </h2>
+{% if data.status != 'DONE' %}
+    <a href='/ticket_edit/{{data.id}}/'>Edit</a>
+{% endif %}
+
+{% if data.status == 'NEW' or data.status == 'IN_PROGRESS'%}
+    <a href='/ticket_invalid/{{data.id}}'>Invalid</a>
+{% endif %}
+
+<p> Date Sumbitted: {{data.time}}</p>
+
+<p> Description:
+{{data.description}}
+</p>
+
+
+<p>Filed By: {{data.filed_by}}</p>
+
+<p>Status: {{data.status}}</p>
+
+{% if data.status == 'IN_PROGRESS'%}
+    <p>Assigned To: {{data.assigned_to}}</p>
+{%endif%}
+
+{% if data.status == 'DONE' %}
+    <p>Completed By: {{ data.completed_by}}</p>
+{% endif %}

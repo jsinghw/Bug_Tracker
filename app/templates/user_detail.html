@@ -1,0 +1,44 @@
+<h1>User</h1>
+
+<div>
+    <a href="/">Home</a>
+</div>
+
+<div>
+    <p>Assigned Tickets</p>
+    {% if tickets_assigned %}
+        {% for x in tickets_assigned %}
+            <li>
+                {{ x }}
+            </li>
+        {% endfor %}
+    {% else %}
+        None
+    {% endif %}
+</div>
+
+<div>
+    <p>Filed Tickets</p>
+    {% if tickets_filed %}
+        {% for x in tickets_filed %}
+            <li>
+                {{ x }}
+            </li>
+        {% endfor %}
+    {% else %}
+        None
+    {% endif %}
+</div>
+
+<div>
+    <p>Completed Tickets</p>
+    {% if tickets_completed %}
+        {% for x in tickets_completed %}
+            <li>
+                {{ x }}
+            </li>
+        {% endfor %}
+    {% else %}
+        None
+    {% endif %}
+</div>
